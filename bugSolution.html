@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug Solution</title>
+</head>
+<body>
+  <div id="myDiv" data-myattribute="myvalue">
+    This is some text.
+  </div>
+  <script>
+    //Always check for null or undefined values after getting an element.
+    const myDiv = document.getElementById("myDiv");
+    if (myDiv) {
+        let x = myDiv.getAttribute("data-myattribute");
+        console.log(x); // Output: myvalue
+
+        let y = myDiv.getAttribute("data-nonexistent");
+        console.log(y); // Output: null
+
+        // Use optional chaining (?.) to safely access properties
+        let z = myDiv?.nonExistentProperty;
+        console.log(z); //Output: undefined
+    } else {
+        console.error("Element not found");
+    }
+  </script>
+</body>
+</html>
